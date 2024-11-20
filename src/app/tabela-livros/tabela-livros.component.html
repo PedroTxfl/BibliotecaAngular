@@ -1,0 +1,17 @@
+<p>Tabela de livros</p>
+
+<h4 *ngIf="listaProdutos.length == 0">]
+  Não há livros cadastrados
+</h4>
+<table *ngIf="listaProdutos.length > 0">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Preço</th>
+  </tr>
+  <tr *ngFor="let produto of listaProdutos">
+    <td>{{produto.id}}</td>
+    <td>{{produto.nome}}</td>
+    <td>{{produto.preco}}</td>
+  </tr>
+</table>

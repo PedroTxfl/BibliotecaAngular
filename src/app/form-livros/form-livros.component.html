@@ -1,0 +1,26 @@
+<h3>Formulário de livros</h3>
+
+<div>
+  <label for="id">ID:</label>
+  <input [(ngModel)] = "livro.id" type="number" id="id">
+  <br />
+
+  <label for="nome">Nome:</label>
+  <input [(ngModel)] = "livro.nome" id="nome">
+  <br />
+
+  <label for="preco">Preço:</label>
+  <input [(ngModel)] = "livro.preco" type="number" id="preco">
+  <br />
+
+  <button (click)="cadastrar()">Cadastrar</button>
+</div>
+
+{{livro | json}}
+<br />
+
+<ul>
+  <li *ngFor=" let liv of listLivros">
+    {{liv | json}}
+  </li>
+</ul>
