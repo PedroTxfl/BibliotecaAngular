@@ -7,13 +7,15 @@ import { TabelaLivrosComponent } from './tabela-livros/tabela-livros.component';
 import { FormLivrosComponent } from './form-livros/form-livros.component';
 import { FormsModule } from '@angular/forms';
 import { CardLivroComponent } from './card-livro/card-livro.component';
+import { ListCardLivrosComponent } from './list-card-livros/list-card-livros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelaLivrosComponent,
     FormLivrosComponent,
-    CardLivroComponent
+    CardLivroComponent,
+    ListCardLivrosComponent
   ],
   imports: [
     BrowserModule,

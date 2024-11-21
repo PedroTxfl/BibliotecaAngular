@@ -1,17 +1,22 @@
-<p>Tabela de livros</p>
+<h3>Tabela de Livros</h3>
 
-<h4 *ngIf="listaProdutos.length == 0">]
-  Não há livros cadastrados
+<h4 *ngIf="listaLivros.length == 0">
+    Nao ha Livros cadastrados!
 </h4>
-<table *ngIf="listaProdutos.length > 0">
-  <tr>
-    <th>ID</th>
-    <th>Nome</th>
-    <th>Preço</th>
-  </tr>
-  <tr *ngFor="let produto of listaProdutos">
-    <td>{{produto.id}}</td>
-    <td>{{produto.nome}}</td>
-    <td>{{produto.preco}}</td>
-  </tr>
+<table class = "table table-striped" *ngIf="listaLivros.length > 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>PRECO</th>
+        </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let livro of listaLivros">
+          <td>{{livro.id}}</td>
+          <td>{{livro.nome}}</td>
+          <td>{{livro.preco}}</td>
+      </tr>
+  </tbody>
+
 </table>
