@@ -1,10 +1,16 @@
 <div class="container">
   <h1>Cadastro Livros</h1>
 
-  <app-list-card-livros></app-list-card-livros>
+  <app-list-card-livros [livros]="listaLivros">
 
-  <app-tabela-livros></app-tabela-livros>
+  </app-list-card-livros>
 
-  <app-form-livros></app-form-livros>
+  <app-tabela-livros [livros]="listaLivros">
+
+  </app-tabela-livros>
+
+  <app-form-livros (onSalvar)="inserir($event)">
+
+  </app-form-livros>
 
 </div>

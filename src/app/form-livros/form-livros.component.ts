@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form-livros',
@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
 })
 export class FormLivrosComponent {
   livro: any = {id:0, nome:"", preco:0};
-  listLivros: any[] = [];
+  @Output() onSalvar = new EventEmitter<any>()
 
   cadastrar() {
-    this.listLivros.push(this.livro);
-    this.livro = {id:0, nome:"", preco:0};
     alert("Produto cadastrado com sucesso")
+    this.onSalvar.emit(this.livro)
+    this.livro = {id:0, nome:"", preco:0};
   }
 }
