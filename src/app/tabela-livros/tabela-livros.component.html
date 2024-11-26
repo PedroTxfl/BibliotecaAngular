@@ -3,7 +3,24 @@
 <h4 *ngIf="listaLivros.length == 0">
     Nao ha Livros cadastrados!
 </h4>
-<table class = "table table-striped" *ngIf="listaLivros.length > 0">
+
+<div>
+  <label>
+    <input
+      type="checkbox"
+      [(ngModel)]="showOnlyActive"
+    />
+    Mostrar apenas ativos
+  </label>
+</div>
+
+<div class="mb-3">
+  <label for="nome" class="form-label">Pesquisa:</label>
+  <input [(ngModel)]="nomePesquisado" class="form-control"
+      id="nome" placeholder="nome do produto ...">
+</div>
+
+<table class = "table table-striped" *ngIf="(listaLivros | filtroPesquisa:nomePesquisado).length > 0">
     <thead>
         <tr>
             <th>ID</th>
@@ -17,7 +34,7 @@
         </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let livro of listaLivros">
+      <tr *ngFor="let livro of listaLivros| filtroPesquisa:nomePesquisado">
           <td>{{livro.id}}</td>
           <td>{{livro.nome}}</td>
           <td>{{livro.autor}}</td>
@@ -26,7 +43,7 @@
           <td>{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
-      </tr>
+        </tr>
   </tbody>
 
 </table>

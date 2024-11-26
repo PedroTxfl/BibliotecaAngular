@@ -9,8 +9,17 @@ import { LivroService } from '../livro.service';
 export class TabelaLivrosComponent {
   // @Input("livros")
   listaLivros: any[] = [];
+  nomePesquisado = "";
 
   constructor(private livroService: LivroService) {
     this.listaLivros = livroService.listar();
+  }
+
+  showOnlyActive = false;
+
+  get filteredItems() {
+    return this.showOnlyActive
+      ? this.listaLivros.filter(livro => livro.isActive)
+      : this.listaLivros;
   }
 }
