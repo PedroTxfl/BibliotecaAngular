@@ -8,14 +8,24 @@
         <tr>
             <th>ID</th>
             <th>NOME</th>
-            <th>PRECO</th>
+            <th>AUTOR</th>
+            <th>EDITORA</th>
+            <th>DISPONÍVEL</th>
+            <th>LOCADOR</th>
+            <th>RETIRADA</th>
+            <th>DEVOLUÇÃO</th>
         </tr>
   </thead>
   <tbody>
       <tr *ngFor="let livro of listaLivros">
           <td>{{livro.id}}</td>
           <td>{{livro.nome}}</td>
-          <td>{{livro.preco}}</td>
+          <td>{{livro.autor}}</td>
+          <td>{{livro.editora}}</td>
+          <td>{{livro.disponivel}}</td>
+          <td>{{livro.locador}}</td>
+          <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
+          <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
       </tr>
   </tbody>
 

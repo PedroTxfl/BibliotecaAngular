@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { LivroService } from '../livro.service';
+import { Livro } from '../livro';
 
 @Component({
   selector: 'app-form-livros',
@@ -6,12 +8,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './form-livros.component.css'
 })
 export class FormLivrosComponent {
-  livro: any = {id:0, nome:"", preco:0};
-  @Output() onSalvar = new EventEmitter<any>()
+  livro = new Livro;
+
+  constructor(private livroService: LivroService) {
+  }
 
   cadastrar() {
+    this.livroService.inserir(this.livro)
     alert("Produto cadastrado com sucesso")
-    this.onSalvar.emit(this.livro)
-    this.livro = {id:0, nome:"", preco:0};
+    this.livro = new Livro;
   }
 }
