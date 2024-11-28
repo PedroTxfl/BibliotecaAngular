@@ -24,4 +24,31 @@ export class LivroService {
     this.listaLivros.push(livro);
   }
 
+  buscarPorId(id:number): Livro {
+    const livro = this.listaLivros.find(
+      livro => livro.id == id
+    );
+    return livro ? Object.assign({}, livro) :new Livro()
+  }
+
+  editar(id: number, livro: Livro) {
+    const indice = this.getIndice(id);
+    if(indice >= 0) {
+      this.listaLivros[indice] = livro;
+    }
+
+  }
+
+  deletar(id?: number) {
+    const indice = this.getIndice(id);
+    if(indice >= 0) {
+      this.listaLivros.splice(indice, 1);
+    }
+  }
+
+  private getIndice(id?:number) {
+    return this.listaLivros.findIndex(
+      livro => livro.id == id
+    )
+  }
 }

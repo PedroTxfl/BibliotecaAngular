@@ -15,6 +15,10 @@ export class TabelaLivrosComponent {
     this.listaLivros = livroService.listar();
   }
 
+  deletar(id?:number) {
+    this.livroService.deletar(id);
+  }
+
   showOnlyActive = false;
 
   get filteredItems() {

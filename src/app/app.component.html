@@ -1,16 +1,31 @@
 <div class="container">
-  <h1>Cadastro Livros</h1>
+  <h1 class="text-center mt-3">Cadastro Livros</h1>
 
-  <app-list-card-livros>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(140, 255, 255);">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  </app-list-card-livros>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tabelaLivros">tabelaLivros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/novo">form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cardsLivros">Card</a>
+        </li>
 
-  <app-tabela-livros >
+      </ul>
+    </div>
+  </nav>
 
-  </app-tabela-livros>
-
-  <app-form-livros >
-
-  </app-form-livros>
+  <router-outlet></router-outlet>
 
 </div>

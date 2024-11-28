@@ -31,6 +31,7 @@
             <th>LOCADOR</th>
             <th>RETIRADA</th>
             <th>DEVOLUÇÃO</th>
+            <th>AÇÃO</th>
         </tr>
   </thead>
   <tbody>
@@ -43,6 +44,8 @@
           <td>{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
+          <td><a routerLink="/edit/{{livro.id}}">Editar</a></td>
+          <td><a routerLink="/tabelaLivros" (click)="deletar(livro.id)">Deletar</a></td>
         </tr>
   </tbody>
 

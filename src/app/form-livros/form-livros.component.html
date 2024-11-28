@@ -1,10 +1,14 @@
 <div class="container">
   <h3>Formulário de Livros</h3>
   <div>
-
     <div class="mb-3">
       <label for="nome" class="form-label">NOME:</label>
-      <input [(ngModel)]="livro.nome" id="nome" class="form-control" placeholder="nome do livro" />
+      <input
+        [(ngModel)]="livro.nome"
+        id="nome"
+        class="form-control"
+        placeholder="nome ..."
+      />
     </div>
 
     <div class="mb-3">
@@ -14,7 +18,7 @@
         [(ngModel)]="livro.autor"
         class="form-control"
         id="autor"
-        placeholder="autor"
+        placeholder="autor ..."
       />
     </div>
 
@@ -24,15 +28,13 @@
         type="string"
         [(ngModel)]="livro.editora"
         class="form-control"
-        id="editora"
+        id="editora ..."
         placeholder="editora"
       />
     </div>
 
-    <button class="btn btn-primary" (click)="cadastrar()">CADASTRAR</button>
+    <button class="btn btn-primary" (click)="salvar()">{{botaoAcao}}</button>
   </div>
 
   {{ livro | json }}
-
-
 </div>

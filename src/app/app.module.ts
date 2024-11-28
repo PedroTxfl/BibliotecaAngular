@@ -10,6 +10,7 @@ import { CardLivroComponent } from './card-livro/card-livro.component';
 import { ListCardLivrosComponent } from './list-card-livros/list-card-livros.component';
 import { DisponibilidadePipe } from './disponibilidade.pipe';
 import { FiltroPesquisaNomePipe } from './filtro-pesquisa-nome.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FiltroPesquisaNomePipe } from './filtro-pesquisa-nome.pipe';
     CardLivroComponent,
     ListCardLivrosComponent,
     DisponibilidadePipe,
-    FiltroPesquisaNomePipe
+    FiltroPesquisaNomePipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
