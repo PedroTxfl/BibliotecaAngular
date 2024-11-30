@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FormLivrosComponent {
   livro = new Livro;
   id?:number;
-  botaoAcao= "CADASTRAR";
+  botaoAcao= "ADICIONAR";
 
   constructor(
     private livroService: LivroService,
@@ -19,7 +19,7 @@ export class FormLivrosComponent {
     private route: ActivatedRoute
   ) {
     this.id = +this.route.snapshot.params['id'];
-    if(this.id) {
+    if(this.id || this.id == 0) {
       this.botaoAcao = "EDITAR"
       this.livro = this.livroService.buscarPorId(this.id);
     }

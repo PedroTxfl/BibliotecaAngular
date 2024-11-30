@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { LivroService } from '../livro.service';
+import { Modal } from 'bootstrap';
+import { ClienteService } from '../cliente.service';
+
 
 @Component({
   selector: 'app-emprestimo',
@@ -9,13 +12,22 @@ import { LivroService } from '../livro.service';
 export class EmprestimoComponent {
 
   listaLivros: any[] = [];
+  listaClientes: any[] = []
   nomePesquisado = "";
 
-  constructor(private livroService: LivroService) {
-    this.listaLivros = livroService.listarLocados();
+  constructor(
+    private livroService: LivroService,
+    private clienteService: ClienteService
+  ) {
+    this.listaLivros = livroService.listar();
+    this.listaClientes = clienteService.listar()
   }
 
-  devolver(id?:number) {
-    this.livroService.realizarDevolucao(id)
+  @Input() botaoDinamicoAcao: string = "Dinamico";
+
+
+
+  devolver(idLivro?:number) {
+    this.livroService.realizarDevolucao(idLivro)
   }
 }

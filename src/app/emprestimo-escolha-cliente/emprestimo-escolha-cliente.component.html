@@ -1,0 +1,40 @@
+<h3>Selecione o cliente que fará a locação</h3>
+
+<h4 *ngIf="listaClientes.length == 0">
+    Nao há Clientes cadastrados!
+</h4>
+
+
+<div class="mb-3">
+  <label for="nome" class="form-label">Pesquisa:</label>
+  <input [(ngModel)]="nomePesquisado" class="form-control"
+      id="nome" placeholder="Nome do cliente ...">
+</div>
+
+<table class = "table table-striped" *ngIf="(listaClientes | filtroClienteNomePesquisa:nomePesquisado).length > 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>RETIRADOS</th>
+            <th>MULTA</th>
+            <th>AÇÃO</th>
+
+        </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let cliente of listaClientes | filtroClienteNomePesquisa:nomePesquisado">
+          <td>{{cliente.id}}</td>
+          <td>{{cliente.nome}}</td>
+          <td>{{cliente.livrosRetirados}}</td>
+          <td>{{cliente.multa}}</td>
+          <td><button class="btn btn-primary" routerLink="" (click)="realizarRetirada(1)">Selecionar</button></td>
+
+        </tr>
+  </tbody>
+
+
+</table>
+
+
+

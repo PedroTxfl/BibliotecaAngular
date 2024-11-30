@@ -12,4 +12,6 @@ export class FiltroPesquisaNomePipe implements PipeTransform {
       return livro.nome?.toLowerCase().includes(nomePesquisado.toLowerCase());
     })
   }
+
+  
 }

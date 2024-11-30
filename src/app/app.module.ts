@@ -13,6 +13,10 @@ import { FiltroPesquisaNomePipe } from './filtro-pesquisa-nome.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClient } from '@angular/common/http';
 import { EmprestimoComponent } from './emprestimo/emprestimo.component';
+import { TabelaClientesComponent } from './tabela-clientes/tabela-clientes.component';
+import { FiltroClienteNomePesquisaPipe } from './filtro-cliente-nome-pesquisa.pipe';
+import { FormClientesComponent } from './form-clientes/form-clientes.component';
+import { EmprestimoEscolhaClienteComponent } from './emprestimo-escolha-cliente/emprestimo-escolha-cliente.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,17 @@ import { EmprestimoComponent } from './emprestimo/emprestimo.component';
     DisponibilidadePipe,
     FiltroPesquisaNomePipe,
     PageNotFoundComponent,
-    EmprestimoComponent
+    EmprestimoComponent,
+    TabelaClientesComponent,
+    FiltroClienteNomePesquisaPipe,
+    FormClientesComponent,
+    EmprestimoEscolhaClienteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

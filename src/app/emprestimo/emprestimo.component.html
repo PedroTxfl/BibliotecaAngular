@@ -1,38 +1,60 @@
-<h2>Livros locados</h2>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  {{botaoDinamicoAcao}}
+</button>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Locação</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        nome cliente
+        dt RETIRADA
+        dt revolucao
+        se tem multa
+      </div>
+      <div class="modal-footer" style="justify-content: space-around;">
+        <button type="button" class="btn btn-outline-primary" routerLink="/emprestimoEscolhaLivro" data-bs-toggle="modal">Retirar</button>
+        <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2">Devolver</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Pesquisa:</label>
+          <input [(ngModel)]="nomePesquisado" class="form-control"
+              id="nome" placeholder="nome do produto ...">
+        </div>
 
-<div class="mb-3">
-  <label for="nome" class="form-label">Pesquisa:</label>
-  <input [(ngModel)]="nomePesquisado" class="form-control"
-      id="nome" placeholder="nome do produto ...">
+        <table class = "table table-striped" *ngIf="(listaClientes | filtroPesquisa:nomePesquisado).length > 0">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>NOME</th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of listaClientes | filtroPesquisa:nomePesquisado">
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.nome}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<table class = "table table-striped" *ngIf="(listaLivros | filtroPesquisa:nomePesquisado).length > 0">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>NOME</th>
-            <th>AUTOR</th>
-            <th>EDITORA</th>
-            <th>DISPONÍVEL</th>
-            <th>LOCADOR</th>
-            <th>RETIRADA</th>
-            <th>DEVOLUÇÃO</th>
-            <th>AÇÃO</th>
-        </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let livro of listaLivros| filtroPesquisa:nomePesquisado">
-          <td>{{livro.id}}</td>
-          <td>{{livro.nome}}</td>
-          <td>{{livro.autor}}</td>
-          <td>{{livro.editora}}</td>
-          <td>{{livro.disponivel}}</td>
-          <td>{{livro.locador}}</td>
-          <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
-          <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
-          <td><a class='btn btn-primary' routerLink="/emprestimo" (click)="devolver(livro.id)">Devolver</a></td>
-        </tr>
-  </tbody>
 
-
-</table>

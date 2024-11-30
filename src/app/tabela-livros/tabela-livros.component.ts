@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LivroService } from '../livro.service';
+import { EmprestimoComponent } from '../emprestimo/emprestimo.component';
 
 @Component({
   selector: 'app-tabela-livros',
@@ -15,6 +16,7 @@ export class TabelaLivrosComponent {
     this.listaLivros = livroService.listar();
   }
 
+
   deletar(id?:number) {
     this.livroService.deletar(id);
   }
@@ -25,7 +27,9 @@ export class TabelaLivrosComponent {
     return this.showOnlyActive
       ? this.listaLivros.filter(livro => livro.isActive)
       : this.listaLivros;
-  }
+  };
 
-  
+
+
+
 }

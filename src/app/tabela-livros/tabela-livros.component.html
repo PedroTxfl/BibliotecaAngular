@@ -35,7 +35,7 @@
         </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let livro of listaLivros| filtroPesquisa:nomePesquisado">
+      <tr *ngFor="let livro of listaLivros | filtroPesquisa:nomePesquisado">
           <td>{{livro.id}}</td>
           <td>{{livro.nome}}</td>
           <td>{{livro.autor}}</td>
@@ -44,13 +44,23 @@
           <td>{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
-          <td><a class='btn btn-primary' routerLink="">Locação</a></td>
-          <td><a class='btn btn-primary' routerLink="/edit/{{livro.id}}">Editar</a></td>
-          <td><a class='btn btn-primary' routerLink="/tabelaLivros" (click)="deletar(livro.id)">Deletar</a></td>
+          <td><app-emprestimo [botaoDinamicoAcao]="'Locação'"></app-emprestimo></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ações
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/edit/{{livro.id}}">Editar</a></li>
+                <li><a class="dropdown-item" routerLink="/tabelaLivros" (click)="deletar(livro.id)">Deletar</a></li>
+              </ul>
+            </div>
+          </td>
         </tr>
   </tbody>
 
 
-
-
 </table>
+
+
+
