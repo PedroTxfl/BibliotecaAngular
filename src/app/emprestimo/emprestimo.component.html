@@ -1,18 +1,4 @@
-<h3>Tabela de Livros</h3>
-
-<h4 *ngIf="listaLivros.length == 0">
-    Nao ha Livros cadastrados!
-</h4>
-
-<div>
-  <label>
-    <input
-      type="checkbox"
-      [(ngModel)]="showOnlyActive"
-    />
-    Mostrar apenas ativos
-  </label>
-</div>
+<h2>Livros locados</h2>
 
 <div class="mb-3">
   <label for="nome" class="form-label">Pesquisa:</label>
@@ -44,13 +30,9 @@
           <td>{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
-          <td><a class='btn btn-primary' routerLink="">Locação</a></td>
-          <td><a class='btn btn-primary' routerLink="/edit/{{livro.id}}">Editar</a></td>
-          <td><a class='btn btn-primary' routerLink="/tabelaLivros" (click)="deletar(livro.id)">Deletar</a></td>
+          <td><a class='btn btn-primary' routerLink="/emprestimo" (click)="devolver(livro.id)">Devolver</a></td>
         </tr>
   </tbody>
-
-
 
 
 </table>

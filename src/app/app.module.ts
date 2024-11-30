@@ -11,6 +11,8 @@ import { ListCardLivrosComponent } from './list-card-livros/list-card-livros.com
 import { DisponibilidadePipe } from './disponibilidade.pipe';
 import { FiltroPesquisaNomePipe } from './filtro-pesquisa-nome.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HttpClient } from '@angular/common/http';
+import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ListCardLivrosComponent,
     DisponibilidadePipe,
     FiltroPesquisaNomePipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmprestimoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

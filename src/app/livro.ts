@@ -3,7 +3,7 @@ export class Livro {
   nome?: string;
   autor?: string;
   editora?: string;
-  disponivel?: boolean ;
+  disponivel?: boolean;
   locador?: number;
   dataRetirada?: Date;
   dataDevolucao?: Date;

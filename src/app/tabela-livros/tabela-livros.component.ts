@@ -26,4 +26,6 @@ export class TabelaLivrosComponent {
       ? this.listaLivros.filter(livro => livro.isActive)
       : this.listaLivros;
   }
+
+  
 }

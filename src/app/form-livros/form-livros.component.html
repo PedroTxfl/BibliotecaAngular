@@ -32,9 +32,15 @@
         placeholder="editora"
       />
     </div>
-
-    <button class="btn btn-primary" (click)="salvar()">{{botaoAcao}}</button>
   </div>
+
+  <button class="btn btn-primary me-3" (click)="salvar()">
+    {{botaoAcao}}
+  </button>
+
+  <button class="btn btn-primary" (click)="voltar()">
+    VOLTAR
+  </button>
 
   {{ livro | json }}
 </div>

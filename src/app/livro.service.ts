@@ -15,6 +15,10 @@ export class LivroService {
     return this.listaLivros;
   }
 
+  listarLocados() {
+    return this.listaLivros.filter((livro) => livro.disponivel)
+  }
+
   private generateId() {
     return this.idGen++;
   }
@@ -43,6 +47,14 @@ export class LivroService {
     const indice = this.getIndice(id);
     if(indice >= 0) {
       this.listaLivros.splice(indice, 1);
+    }
+  }
+
+  realizarDevolucao(id?: number) {
+    const indice = this.getIndice(id);
+    if(indice >= 0) {
+      this.listaLivros[indice].disponivel = true;
+      this.listaLivros[indice].locador = undefined;
     }
   }
 

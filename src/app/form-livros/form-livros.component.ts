@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { LivroService } from '../livro.service';
 import { Livro } from '../livro';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-livros',
@@ -15,6 +15,7 @@ export class FormLivrosComponent {
 
   constructor(
     private livroService: LivroService,
+    private router: Router,
     private route: ActivatedRoute
   ) {
     this.id = +this.route.snapshot.params['id'];
@@ -34,6 +35,9 @@ export class FormLivrosComponent {
       alert("Produto cadastrado com sucesso")
       this.livro = new Livro;
     }
+  }
 
+  voltar() {
+    this.router.navigate(['/tabelaLivros']);
   }
 }
