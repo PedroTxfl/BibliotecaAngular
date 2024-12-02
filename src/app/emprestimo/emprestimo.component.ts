@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { LivroService } from '../livro.service';
 import { Modal } from 'bootstrap';
 import { ClienteService } from '../cliente.service';
@@ -24,10 +24,11 @@ export class EmprestimoComponent {
   }
 
   @Input() botaoDinamicoAcao: string = "Dinamico";
+  @Input() livroId?: number; // Recebe o ID do livro
+  @Output() acaoRealizada = new EventEmitter<number>();
 
-
-
-  devolver(idLivro?:number) {
-    this.livroService.realizarDevolucao(idLivro)
+  emitirAcao() {
+    this.acaoRealizada.emit(this.livroId);
   }
+
 }

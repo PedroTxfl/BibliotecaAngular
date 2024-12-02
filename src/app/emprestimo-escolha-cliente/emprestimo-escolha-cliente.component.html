@@ -28,7 +28,13 @@
           <td>{{cliente.nome}}</td>
           <td>{{cliente.livrosRetirados}}</td>
           <td>{{cliente.multa}}</td>
-          <td><button class="btn btn-primary" routerLink="" (click)="realizarRetirada(1)">Selecionar</button></td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="selecionaIdClienteParaRealizarRetiradaEFinalizaRetirada(cliente.id)">
+              Selecionar
+            </button>
+          </td>
 
         </tr>
   </tbody>

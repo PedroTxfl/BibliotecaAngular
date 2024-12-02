@@ -44,7 +44,10 @@
           <td>{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
-          <td><app-emprestimo [botaoDinamicoAcao]="'Locação'"></app-emprestimo></td>
+          <td><app-emprestimo
+            [botaoDinamicoAcao]="'Locação'"
+            [livroId]="livro.id"
+            (acaoRealizada)="armazenarId($event)"></app-emprestimo></td>
           <td>
             <div class="dropdown">
               <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

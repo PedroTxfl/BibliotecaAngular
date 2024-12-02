@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './list-card-livros.component.css'
 })
 export class ListCardLivrosComponent {
-  @Input('livros') listaLivros: any[] = []
+  @Input('livros') listaLivros: any[] = [
+    
+  ]
 }

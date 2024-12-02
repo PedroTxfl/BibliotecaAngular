@@ -35,7 +35,7 @@ export class ClienteService {
   }
 
 
-  buscarPorId(id:number): Cliente {
+  buscarPorId(id?:number): Cliente {
     const cliente = this.listaClientes.find(
       cliente => cliente.id == id
     );

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Livro } from './livro';
+import { Cliente } from './cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class LivroService {
     this.listaLivros.push(livro);
   }
 
-  buscarPorId(id:number): Livro {
+  buscarPorId(id:number | null): Livro {
     const livro = this.listaLivros.find(
       livro => livro.id == id
     );
@@ -47,6 +48,22 @@ export class LivroService {
     const indice = this.getIndice(id);
     if(indice >= 0) {
       this.listaLivros.splice(indice, 1);
+    }
+  }
+
+  realizarRetirada(livro: Livro, cliente: Cliente) {
+    console.log(livro.disponivel);
+    if (livro.disponivel == true) {
+      cliente?.livrosRetirados?.push(livro);
+
+      livro.dataRetirada = new Date;
+      livro.dataDevolucao = new Date(livro.dataRetirada.getTime() + 7 * 24 * 60 * 60 * 1000);
+      livro.locador = cliente;
+      livro.disponivel = false;
+      console.log('locou')
+
+    } else {
+      console.log('ta locado ja')
     }
   }
 

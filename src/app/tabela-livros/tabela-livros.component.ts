@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { LivroService } from '../livro.service';
 import { EmprestimoComponent } from '../emprestimo/emprestimo.component';
+import { LivroSelecionadoService } from '../livro-selecionado.service';
 
 @Component({
   selector: 'app-tabela-livros',
@@ -12,7 +13,10 @@ export class TabelaLivrosComponent {
   listaLivros: any[] = [];
   nomePesquisado = "";
 
-  constructor(private livroService: LivroService) {
+  constructor(
+    private livroService: LivroService,
+    private livroSelecionadoService: LivroSelecionadoService
+  ) {
     this.listaLivros = livroService.listar();
   }
 
@@ -29,7 +33,10 @@ export class TabelaLivrosComponent {
       : this.listaLivros;
   };
 
-
+  armazenarId(id: number) {
+    const livro = this.livroSelecionadoService.setLivroId(id);
+    return livro;
+  }
 
 
 }
