@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ClienteService } from '../cliente.service';
+import { ClienteApiService } from '../cliente-api.service';
+import { Cliente } from '../cliente';
 
 @Component({
   selector: 'app-tabela-clientes',
@@ -7,17 +9,29 @@ import { ClienteService } from '../cliente.service';
   styleUrl: './tabela-clientes.component.css'
 })
 export class TabelaClientesComponent {
-  listaClientes: any[] = [];
+  listaClientes: Cliente[] = [];
   nomePesquisado = "";
 
-  constructor(private clienteService: ClienteService) {
-    this.listaClientes = clienteService.listar();
+  constructor(private clienteApiService: ClienteApiService) {
+    this.listar()
   }
 
+  listar() {
+    this.clienteApiService.listar().subscribe(
+      (clientes) => {
+        this.listaClientes = clientes;
+      }
+    );
+  }
 
   deletar(id?:number) {
-    this.clienteService.deletar(id);
+    this.clienteApiService.deletar(id!).subscribe(
+      (livro) => {
+        alert(`Livro deletado com sucesso!`);
+        this.listar();
+      }
+    );
   }
 
-  
+
 }

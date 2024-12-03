@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { LivroService } from '../livro.service';
 import { Livro } from '../livro';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LivroApiService } from '../livro-api.service';
 
 @Component({
   selector: 'app-form-livros',
@@ -14,26 +15,36 @@ export class FormLivrosComponent {
   botaoAcao= "ADICIONAR";
 
   constructor(
-    private livroService: LivroService,
+    private livroApiService: LivroApiService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.id = +this.route.snapshot.params['id'];
-    if(this.id || this.id == 0) {
-      this.botaoAcao = "EDITAR"
-      this.livro = this.livroService.buscarPorId(this.id);
+    if(this.id) {
+      this.botaoAcao = "EDITAR";
+      this.livroApiService.buscarPorId(this.id).subscribe(
+        (livro) => this.livro = livro
+      );
     }
-  }
+}
 
   salvar() {
     if(this.id) {
-      this.livroService.editar(this.id, this.livro);
-      alert("Produto cadastrado com sucesso")
+      this.livroApiService.editar(this.id, this.livro).subscribe(
+        (livro) => {
+          alert(`Livro ${this.livro.nome} editado com sucesso`);
+          this.livro = livro;
+        }
+      );
+
 
     } else {
-      this.livroService.inserir(this.livro)
-      alert("Produto cadastrado com sucesso")
-      this.livro = new Livro;
+      this.livroApiService.inserir(this.livro).subscribe(
+        (livro) => {
+          alert(`Livro ${this.livro.nome} adicionado com sucesso`)
+          this.livro = new Livro;
+        }
+      )
     }
   }
 

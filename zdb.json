@@ -1,0 +1,101 @@
+{
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "Ms. Annabelle Weber",
+      "telefone": "51 8888888",
+      "livrosRetirados": [],
+      "multa": 0
+    },
+    {
+      "id": "2",
+      "nome": "Mr. Edward Bauch",
+      "telefone": "51 77777777",
+      "livrosRetirados": [],
+      "multa": 0
+    },
+    {
+      "id": "3",
+      "nome": "Mrs. Jennifer Schulist",
+      "telefone": "51 99999999",
+      "livrosRetirados": [],
+      "multa": 0
+    },
+    {
+      "id": "a591",
+      "nome": "Pedro Liu",
+      "telefone": "51 00202020"
+    }
+  ],
+  "livros": [
+    {
+      "id": "1",
+      "nome": "1984",
+      "autor": "George Orwell",
+      "editora": "Companhia das Letras",
+      "disponivel": true
+    },
+    {
+      "id": "2",
+      "nome": "O Hobbit",
+      "autor": "PEDRINN",
+      "editora": "HarperCollins",
+      "disponivel": true
+    },
+    {
+      "id": "4",
+      "nome": "Orgulho e Preconceito",
+      "autor": "Jane Austen",
+      "editora": "Martin Claret",
+      "disponivel": true
+    },
+    {
+      "id": "5",
+      "nome": "Cem Anos de Solidão",
+      "autor": "Gabriel García Márquez",
+      "editora": "Record",
+      "disponivel": true
+    },
+    {
+      "id": "6",
+      "nome": "O Apanhador no Campo de Centeio",
+      "autor": "J.D. Salinger",
+      "editora": "Editora do Autor",
+      "disponivel": true
+    },
+    {
+      "id": "7",
+      "nome": "A Revolução dos Bichos",
+      "autor": "George Orwell",
+      "editora": "Companhia das Letras",
+      "disponivel": true
+    },
+    {
+      "id": "8",
+      "nome": "O Grande Gatsby",
+      "autor": "F. Scott Fitzgerald",
+      "editora": "Scribner",
+      "disponivel": true
+    },
+    {
+      "id": "9",
+      "nome": "Moby Dick",
+      "autor": "Herman Melville",
+      "editora": "Penguin Classics",
+      "disponivel": true
+    },
+    {
+      "id": "10",
+      "nome": "Crime e Castigo",
+      "autor": "Fiódor Dostoiévski",
+      "editora": "Editora 34",
+      "disponivel": true
+    },
+    {
+      "id": "c1a0",
+      "nome": "biografia pele",
+      "autor": "pele",
+      "editora": "pele editora"
+    }
+  ]
+}

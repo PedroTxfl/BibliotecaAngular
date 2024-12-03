@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Livro } from '../livro';
+import { LivroApiService } from '../livro-api.service';
 
 @Component({
   selector: 'app-list-card-livros',
@@ -6,7 +8,13 @@ import { Component, Input } from '@angular/core';
   styleUrl: './list-card-livros.component.css'
 })
 export class ListCardLivrosComponent {
-  @Input('livros') listaLivros: any[] = [
-    
-  ]
+  listaLivros: Livro[] = [];
+
+  constructor(private livroApiService: LivroApiService) {
+    this.livroApiService.listar().subscribe(
+      (livros) => {
+        this.listaLivros = livros
+      }
+    )
+  }
 }

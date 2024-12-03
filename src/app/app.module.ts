@@ -11,7 +11,7 @@ import { ListCardLivrosComponent } from './list-card-livros/list-card-livros.com
 import { DisponibilidadePipe } from './disponibilidade.pipe';
 import { FiltroPesquisaNomePipe } from './filtro-pesquisa-nome.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 import { TabelaClientesComponent } from './tabela-clientes/tabela-clientes.component';
 import { FiltroClienteNomePesquisaPipe } from './filtro-cliente-nome-pesquisa.pipe';
@@ -37,10 +37,12 @@ import { EmprestimoEscolhaClienteComponent } from './emprestimo-escolha-cliente/
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule
 
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

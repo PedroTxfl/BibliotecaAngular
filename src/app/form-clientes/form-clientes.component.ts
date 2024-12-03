@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../cliente';
-import { ClienteService } from '../cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteApiService } from '../cliente-api.service';
 
 @Component({
   selector: 'app-form-clientes',
@@ -14,26 +14,37 @@ export class FormClientesComponent {
   botaoAcao= "CADASTRAR";
 
   constructor(
-    private clienteService: ClienteService,
+    private clienteApiService: ClienteApiService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.id = +this.route.snapshot.params['id'];
     if(this.id || this.id == 0) {
       this.botaoAcao = "EDITAR"
-      this.cliente = this.clienteService.buscarPorId(this.id);
+      this.clienteApiService.buscarPorId(this.id).subscribe(
+        (cliente) => this.cliente = cliente
+      );
     }
   }
 
   salvar() {
     if(this.id) {
-      this.clienteService.editar(this.id, this.cliente);
-      alert("Produto cadastrado com sucesso")
+      this.clienteApiService.editar(this.id, this.cliente).subscribe(
+        (cliente) => {
+        alert(`Cliente ${this.cliente.nome} editado com sucesso`);
+        this.cliente = cliente;
+        }
+      );
+
 
     } else {
-      this.clienteService.inserir(this.cliente)
-      alert("Produto cadastrado com sucesso")
-      this.cliente = new Cliente;
+      this.clienteApiService.inserir(this.cliente).subscribe(
+        (cliente) => {
+          alert(`Cliente ${this.cliente.nome} Cadastrado com sucesso`)
+          this.cliente = new Cliente;
+        }
+      )
+
     }
   }
 

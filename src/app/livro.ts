@@ -5,7 +5,7 @@ export class Livro {
   nome?: string;
   autor?: string;
   editora?: string;
-  disponivel: boolean = true;
+  disponivel?: boolean;
   locador?: Cliente;
   dataRetirada?: Date;
   dataDevolucao?: Date;
