@@ -18,7 +18,7 @@
             <th>NOME</th>
             <th>RETIRADOS</th>
             <th>MULTA</th>
-
+            <th>AÇÃO</th>
         </tr>
   </thead>
   <tbody>
@@ -27,6 +27,17 @@
           <td>{{cliente.nome}}</td>
           <td>{{cliente.livrosRetirados}}</td>
           <td>{{cliente.multa}}</td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ações
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/editClientes/{{cliente.id}}">Editar</a></li>
+                <li><a class="dropdown-item" routerLink="/tabelaClientes" (click)="deletar(cliente.id)">Deletar</a></li>
+              </ul>
+            </div>
+          </td>
 
 
         </tr>

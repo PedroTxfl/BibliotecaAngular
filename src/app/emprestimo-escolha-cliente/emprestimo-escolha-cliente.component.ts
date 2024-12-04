@@ -4,6 +4,9 @@ import { LivroService } from '../livro.service';
 import { Livro } from '../livro';
 import { Cliente } from '../cliente';
 import { LivroSelecionadoService } from '../livro-selecionado.service';
+import { ClienteApiService } from '../cliente-api.service';
+import { LivroApiService } from '../livro-api.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-emprestimo-escolha-cliente',
@@ -11,8 +14,8 @@ import { LivroSelecionadoService } from '../livro-selecionado.service';
   styleUrl: './emprestimo-escolha-cliente.component.css'
 })
 export class EmprestimoEscolhaClienteComponent {
-  listaClientes: any[] = [];
-  listaLivros: any[] = [];
+  listaClientes: Cliente[] = [];
+  listaLivros: Livro[] = [];
   livroId: number | null = null;
   clienteSelecionadoId: number | null | undefined = null;
 
@@ -20,31 +23,43 @@ export class EmprestimoEscolhaClienteComponent {
   nomePesquisado = "";
 
   constructor(
-    private clienteService: ClienteService,
-    private livroService: LivroService,
+    private clienteApiService: ClienteApiService,
+    private livroApiService: LivroApiService,
     private livroSelecionadoService: LivroSelecionadoService
   ) {
-    this.listaClientes = clienteService.listar();
-    this.listaLivros = livroService.listar()
+    this.listarClientes();
   }
 
   ngOnInit() {
-    this.livroSelecionadoService.livroId$.subscribe(id => {
+    this.livroSelecionadoService.getLivroSelecionado().subscribe(id => {
       this.livroId = id;
+      console.log(this.livroId)
     });
+
   }
 
+  listarClientes() {
+    this.clienteApiService.listar().subscribe(
+      (clientes) => {
+        this.listaClientes = clientes;
+      }
+    );
+  }
+
+
   selecionaIdLivroParaRealizarRetirada(){
-    const livro = this.livroService.buscarPorId(this.livroId);
+    const livro = this.livroApiService.buscarPorId(this.livroId!);
     return livro;
   }
 
   selecionaIdClienteParaRealizarRetiradaEFinalizaRetirada(idCliente?: number){
-    const cliente = this.clienteService.buscarPorId(idCliente)
+    const cliente = this.clienteApiService.buscarPorId(idCliente!)
     const livro = this.selecionaIdLivroParaRealizarRetirada()
-    this.livroService.realizarRetirada(livro , cliente)
-    console.log('funfou?')
+    combineLatest([livro, cliente]).subscribe(
+      ([livro, cliente]) => {
+        this.livroApiService.realizarRetirada(livro, cliente).subscribe(() => {
+          alert(`Retirada do livro ${livro.nome} realizada com sucesso!`);
+        })
+  })
   }
-
-
 }

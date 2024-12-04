@@ -6,46 +6,54 @@
 
 
 <div class="mb-3">
-  <label for="nome" class="form-label">Pesquisa:</label>
+  <label for="nome" class="form-label">Pesquisa por nome do livro:</label>
   <input [(ngModel)]="nomePesquisado" class="form-control"
-      id="nome" placeholder="nome do produto ...">
+      id="nome" placeholder="Nome do livro ...">
 </div>
 
-<table class = "table table-striped" *ngIf="(listaLivros | filtroPesquisa:nomePesquisado).length > 0">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>NOME</th>
-            <th>AUTOR</th>
-            <th>EDITORA</th>
-            <th>DISPONÍVEL</th>
-            <th>LOCADOR</th>
-            <th>RETIRADA</th>
-            <th>DEVOLUÇÃO</th>
-            <th>AÇÃO</th>
-        </tr>
+<div class="mb-3">
+  <label for="locador" class="form-label">Pesquisa por Locador:</label>
+  <input [(ngModel)]="locadorPesquisado" class="form-control"
+      id="locador" placeholder="Nome do locador ...">
+</div>
+
+<table class="table table-striped" *ngIf="(listaLivros | filtroPesquisa:nomePesquisado:locadorPesquisado).length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>NOME</th>
+      <th>AUTOR</th>
+      <th>EDITORA</th>
+      <th>DISPONÍVEL</th>
+      <th>LOCADOR</th>
+      <th>RETIRADA</th>
+      <th>DEVOLUÇÃO</th>
+      <th>AÇÃO</th>
+    </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let livro of listaLivros | filtroPesquisa:nomePesquisado">
-          <td>{{livro.id}}</td>
+    <tr *ngFor="let livro of listaLivros | filtroPesquisa:nomePesquisado:locadorPesquisado">
+      <td>{{livro.id}}</td>
           <td>{{livro.nome}}</td>
           <td>{{livro.autor}}</td>
           <td>{{livro.editora}}</td>
           <td>{{livro.disponivel}}</td>
-          <td>{{livro.locador}}</td>
+          <td >{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>
           <td><app-emprestimo
             [botaoDinamicoAcao]="'Locação'"
             [livroId]="livro.id"
-            (acaoRealizada)="armazenarId($event)"></app-emprestimo></td>
+            (click)="selecionarLivro(livro.id!)"
+            (click)="selecionarCliente(livro.locador!)">
+          </app-emprestimo></td>
           <td>
             <div class="dropdown">
               <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Ações
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" routerLink="/edit/{{livro.id}}">Editar</a></li>
+                <li><a class="dropdown-item" routerLink="/editLivros/{{livro.id}}">Editar</a></li>
                 <li><a class="dropdown-item" routerLink="/tabelaLivros" (click)="deletar(livro.id)">Deletar</a></li>
               </ul>
             </div>

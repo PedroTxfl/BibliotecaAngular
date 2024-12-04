@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, viewChild } from '@angular/core';
 import { LivroService } from '../livro.service';
 import { EmprestimoComponent } from '../emprestimo/emprestimo.component';
 import { LivroSelecionadoService } from '../livro-selecionado.service';
 import { Livro } from '../livro';
 import { LivroApiService } from '../livro-api.service';
+import { ClienteSelecionadoService } from '../cliente-selecionado.service';
 
 @Component({
   selector: 'app-tabela-livros',
@@ -14,10 +15,13 @@ export class TabelaLivrosComponent {
   // @Input("livros")
   listaLivros: Livro[] = [];
   nomePesquisado = "";
+  locadorPesquisado: string = '';
+  clienteId: number = 123;
 
   constructor(
     private livroApiService: LivroApiService,
-    private livroSelecionadoService: LivroSelecionadoService
+    private livroSelecionadoService: LivroSelecionadoService,
+    private clienteSelecionadoService: ClienteSelecionadoService
   ) {
     this.listar();
   }
@@ -39,10 +43,13 @@ export class TabelaLivrosComponent {
     )
   }
 
-  armazenarId(id: number) {
-    const livro = this.livroSelecionadoService.setLivroId(id);
-    return livro;
+  selecionarLivro(id: number): void {
+    this.livroSelecionadoService.setLivroSelecionado(id); // Define o ID no serviço
   }
 
+  selecionarCliente(locador: string): void {
+    const idCliente = locador.split('-')[0];
+    this.clienteSelecionadoService.setIdCliente(Number(idCliente));
+  }
 
 }

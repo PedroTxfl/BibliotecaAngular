@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from './cliente';
+import { Livro } from './livro';
 
 const BASE_API = "http://localhost:3000/clientes"
 const httpOptions = {
@@ -18,7 +19,6 @@ export class ClienteApiService {
   constructor(private http: HttpClient) { }
 
   listar(): Observable<Cliente[]> {
-    console.log('foiii');
     return this.http.get<Cliente[]>(BASE_API);
 
   }
@@ -29,6 +29,7 @@ export class ClienteApiService {
   }
 
   inserir(cliente: Cliente): Observable<Cliente> {
+    cliente.multa = 0
     return this.http.post(BASE_API, cliente, httpOptions);
   }
 
@@ -41,5 +42,7 @@ export class ClienteApiService {
     const uri = `${BASE_API}/${id}`;
     return this.http.delete<Cliente>(uri);
   }
+
+
 }
 

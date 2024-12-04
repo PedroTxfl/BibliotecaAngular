@@ -58,7 +58,7 @@ export class LivroService {
 
       livro.dataRetirada = new Date;
       livro.dataDevolucao = new Date(livro.dataRetirada.getTime() + 7 * 24 * 60 * 60 * 1000);
-      livro.locador = cliente;
+      //livro.locador = cliente;
       livro.disponivel = false;
       console.log('locou')
 

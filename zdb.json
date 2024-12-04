@@ -2,29 +2,32 @@
   "clientes": [
     {
       "id": "1",
-      "nome": "Ms. Annabelle Weber",
+      "nome": "Ms. Anna Cristina Ranzolin",
       "telefone": "51 8888888",
-      "livrosRetirados": [],
-      "multa": 0
+      "livrosRetirados": []
     },
     {
       "id": "2",
-      "nome": "Mr. Edward Bauch",
+      "nome": "Edward Bauch",
       "telefone": "51 77777777",
-      "livrosRetirados": [],
-      "multa": 0
+      "livrosRetirados": [
+        {
+          "id": "2",
+          "nome": "O Hobbit",
+          "autor": "PEDRINN",
+          "editora": "HarperCollins",
+          "disponivel": false,
+          "dataRetirada": "2024-12-04T22:26:28.511Z",
+          "dataDevolucao": "2024-12-11T22:26:28.511Z",
+          "locador": "2-Mr. Edward Bauch"
+        }
+      ]
     },
     {
       "id": "3",
-      "nome": "Mrs. Jennifer Schulist",
+      "nome": "Jennifer Schulist",
       "telefone": "51 99999999",
-      "livrosRetirados": [],
-      "multa": 0
-    },
-    {
-      "id": "a591",
-      "nome": "Pedro Liu",
-      "telefone": "51 00202020"
+      "livrosRetirados": []
     }
   ],
   "livros": [
@@ -33,28 +36,26 @@
       "nome": "1984",
       "autor": "George Orwell",
       "editora": "Companhia das Letras",
-      "disponivel": true
+      "disponivel": true,
+      "dataDevolucao": "2024-12-04T22:12:15.332Z"
     },
     {
       "id": "2",
       "nome": "O Hobbit",
       "autor": "PEDRINN",
       "editora": "HarperCollins",
-      "disponivel": true
-    },
-    {
-      "id": "4",
-      "nome": "Orgulho e Preconceito",
-      "autor": "Jane Austen",
-      "editora": "Martin Claret",
-      "disponivel": true
+      "disponivel": false,
+      "dataRetirada": "2024-12-04T22:26:28.511Z",
+      "dataDevolucao": "2024-12-11T22:26:28.511Z",
+      "locador": "2-Mr. Edward Bauch"
     },
     {
       "id": "5",
       "nome": "Cem Anos de Solidão",
       "autor": "Gabriel García Márquez",
       "editora": "Record",
-      "disponivel": true
+      "disponivel": true,
+      "dataDevolucao": "2024-12-04T22:04:21.083Z"
     },
     {
       "id": "6",
@@ -92,10 +93,11 @@
       "disponivel": true
     },
     {
-      "id": "c1a0",
-      "nome": "biografia pele",
-      "autor": "pele",
-      "editora": "pele editora"
+      "id": "ccf5",
+      "nome": "Rico facil",
+      "autor": "Pedroka",
+      "editora": "Cml",
+      "disponivel": true
     }
   ]
 }

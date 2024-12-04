@@ -5,10 +5,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LivroSelecionadoService {
-  private livroIdSource = new BehaviorSubject<number | null>(null);
-  livroId$ = this.livroIdSource.asObservable();
+  private livroSelecionado = new BehaviorSubject<number | null>(null);
 
-  setLivroId(id: number) {
-    this.livroIdSource.next(id);
+  setLivroSelecionado(id: number): void {
+    this.livroSelecionado.next(id);
+  }
+
+  getLivroSelecionado() {
+    return this.livroSelecionado.asObservable(); // Permite que outros componentes "ouçam" as mudanças
   }
 }

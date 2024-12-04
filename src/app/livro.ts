@@ -6,7 +6,7 @@ export class Livro {
   autor?: string;
   editora?: string;
   disponivel?: boolean;
-  locador?: Cliente;
+  locador?: string;
   dataRetirada?: Date;
   dataDevolucao?: Date;
 }

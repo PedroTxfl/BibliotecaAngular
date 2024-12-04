@@ -16,6 +16,10 @@ export class TabelaClientesComponent {
     this.listar()
   }
 
+  ngOnChanges() {
+    this.listar()
+  }
+
   listar() {
     this.clienteApiService.listar().subscribe(
       (clientes) => {
@@ -24,14 +28,25 @@ export class TabelaClientesComponent {
     );
   }
 
-  deletar(id?:number) {
+  deletar(id?: number) {
+    const cliente = this.listaClientes.find(cliente => cliente.id === id);
+
+    if (cliente && cliente.livrosRetirados && cliente.livrosRetirados.length > 0) {
+      alert('Este cliente não pode ser deletado porque possui livros retirados.');
+      return;
+    }
+
     this.clienteApiService.deletar(id!).subscribe(
-      (livro) => {
-        alert(`Livro deletado com sucesso!`);
+      () => {
+        alert('Cliente deletado com sucesso!');
         this.listar();
+      },
+      (error) => {
+        alert('Erro ao deletar cliente: ' + error.message);
       }
     );
   }
 
-
 }
+
+
