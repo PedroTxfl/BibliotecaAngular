@@ -5,7 +5,7 @@ import { Livro } from './livro';
 import { Cliente } from './cliente';
 import { ClienteApiService } from './cliente-api.service';
 
-const BASE_API = "http://localhost:3000/livros"
+const BASE_API = "http://localhost:3000/api/livros"
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json"
@@ -23,6 +23,7 @@ export class LivroApiService {
   ) { }
 
   listar(): Observable<Livro[]> {
+    this.updateToken();
     return this.http.get<Livro[]>(BASE_API);
 
   }
@@ -31,27 +32,32 @@ export class LivroApiService {
 
   buscarPorId(id: number): Observable<Livro> {
     const uri = `${BASE_API}/${id}`;
+    this.updateToken();
     return this.http.get<Livro>(uri);
   }
 
   inserir(livro: Livro): Observable<Livro> {
     livro.disponivel = true;
+    this.updateToken();
     return this.http.post(BASE_API, livro, httpOptions);
   }
 
   editar(id: number, livro:Livro): Observable<Livro> {
     const uri = `${BASE_API}/${id}`;
+    this.updateToken();
     return this.http.put<Livro>(uri,livro,httpOptions);
   }
 
   deletar(id: number): Observable<Livro> {
     const uri = `${BASE_API}/${id}`;
+    this.updateToken();
     return this.http.delete<Livro>(uri);
   }
 
 
 
   realizarRetirada(livro: Livro, cliente: Cliente): Observable<void> {
+    this.updateToken();
     return new Observable((observer) => {
       if (livro.disponivel) {
         if (!cliente.livrosRetirados) {
@@ -91,6 +97,8 @@ export class LivroApiService {
   }
 
   realizarDevolucao(livro: Livro, cliente: Cliente): Observable<void> {
+    this.updateToken();
+
     return new Observable((observer) => {
       if (!livro.disponivel) {
 
@@ -135,5 +143,16 @@ export class LivroApiService {
         observer.error("Livro não foi locado."); // Emite erro se livro não estiver disponível
       }
     })
+}
+updateToken() {
+  let token = sessionStorage.getItem("token");
+  if(!token){
+    token = "";
+  }
+  console.log("token",token);
+  httpOptions.headers =  new HttpHeaders({
+    "Content-Type": "application/json",
+    "token": token
+  })
 }
 }
