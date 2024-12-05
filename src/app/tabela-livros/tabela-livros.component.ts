@@ -1,5 +1,4 @@
 import { Component, Input, ViewChild, viewChild } from '@angular/core';
-import { LivroService } from '../livro.service';
 import { EmprestimoComponent } from '../emprestimo/emprestimo.component';
 import { LivroSelecionadoService } from '../livro-selecionado.service';
 import { Livro } from '../livro';

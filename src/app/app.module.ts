@@ -17,6 +17,7 @@ import { TabelaClientesComponent } from './tabela-clientes/tabela-clientes.compo
 import { FiltroClienteNomePesquisaPipe } from './filtro-cliente-nome-pesquisa.pipe';
 import { FormClientesComponent } from './form-clientes/form-clientes.component';
 import { EmprestimoEscolhaClienteComponent } from './emprestimo-escolha-cliente/emprestimo-escolha-cliente.component';
+import { MoedaPipe } from './moeda.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EmprestimoEscolhaClienteComponent } from './emprestimo-escolha-cliente/
     TabelaClientesComponent,
     FiltroClienteNomePesquisaPipe,
     FormClientesComponent,
-    EmprestimoEscolhaClienteComponent
+    EmprestimoEscolhaClienteComponent,
+    MoedaPipe
   ],
   imports: [
     BrowserModule,

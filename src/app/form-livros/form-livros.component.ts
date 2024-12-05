@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { LivroService } from '../livro.service';
 import { Livro } from '../livro';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LivroApiService } from '../livro-api.service';

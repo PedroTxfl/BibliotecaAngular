@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ClienteService } from '../cliente.service';
-import { LivroService } from '../livro.service';
 import { Livro } from '../livro';
 import { Cliente } from '../cliente';
 import { LivroSelecionadoService } from '../livro-selecionado.service';

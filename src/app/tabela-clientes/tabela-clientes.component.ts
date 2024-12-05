@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ClienteService } from '../cliente.service';
 import { ClienteApiService } from '../cliente-api.service';
 import { Cliente } from '../cliente';
 
