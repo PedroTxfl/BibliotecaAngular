@@ -8,7 +8,6 @@ import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 import { TabelaClientesComponent } from './tabela-clientes/tabela-clientes.component';
 import { FormClientesComponent } from './form-clientes/form-clientes.component';
 import { EmprestimoEscolhaClienteComponent } from './emprestimo-escolha-cliente/emprestimo-escolha-cliente.component';
-import { ListCardLivrosComponent } from './list-card-livros/list-card-livros.component';
 
 const routes: Routes = [
   { path: 'tabelaLivros', component: TabelaLivrosComponent },
@@ -17,10 +16,9 @@ const routes: Routes = [
   { path: 'novoCliente', component: FormClientesComponent },
   { path: 'editLivros/:id', component: FormLivrosComponent },
   { path: 'editClientes/:id', component: FormClientesComponent },
-  { path: 'cardsLivros', component: ListCardLivrosComponent },
   { path: 'emprestimo', component: EmprestimoComponent },
   { path: 'emprestimoEscolhaLivro', component: EmprestimoEscolhaClienteComponent },
-  { path: '', redirectTo:'/tabela', pathMatch: 'full' },
+  { path: '', redirectTo:'/tabelaLivros', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 
 ];

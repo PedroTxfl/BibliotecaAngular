@@ -14,7 +14,6 @@ export class TabelaLivrosComponent {
   // @Input("livros")
   listaLivros: Livro[] = [];
   nomePesquisado = "";
-  locadorPesquisado: string = '';
   clienteId: number = 123;
 
   constructor(
@@ -25,6 +24,7 @@ export class TabelaLivrosComponent {
     this.listar();
   }
 
+
   listar() {
     this.livroApiService.listar().subscribe(
       (livros) => {
@@ -34,16 +34,24 @@ export class TabelaLivrosComponent {
   }
 
   deletar(id?:number) {
+    const livro = this.listaLivros.find(livro => livro.id === id);
+
+    if (livro && livro.locador) {
+      alert('Este livro não pode ser deletado porque ele está locado.');
+      return;
+    }
+
     this.livroApiService.deletar(id!).subscribe(
       (livro) => {
-        alert(`livro deletado com sucesso!`);
+        alert(`Livro ${livro.nome} deletado com sucesso!`);
         this.listar();
-      }
-    )
-  }
+      })
+    }
+
+
 
   selecionarLivro(id: number): void {
-    this.livroSelecionadoService.setLivroSelecionado(id); // Define o ID no serviço
+    this.livroSelecionadoService.setLivroSelecionado(id);
   }
 
   selecionarCliente(locador: string): void {

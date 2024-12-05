@@ -36,14 +36,17 @@ export class TabelaClientesComponent {
     }
 
     this.clienteApiService.deletar(id!).subscribe(
-      () => {
-        alert('Cliente deletado com sucesso!');
+      (cliente) => {
+        alert(`Cliente ${cliente.nome} deletado com sucesso!`);
         this.listar();
-      },
-      (error) => {
-        alert('Erro ao deletar cliente: ' + error.message);
-      }
-    );
+  })
+  }
+
+  formatarLivros(livros: any[] | undefined): string {
+    if (!livros || livros.length === 0) {
+      return 'Nenhum livro retirado';
+    }
+    return livros.map(livro => livro.nome).join(', ');
   }
 
 }

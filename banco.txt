@@ -1,0 +1,2 @@
+ng serve
+npx json-server db.json

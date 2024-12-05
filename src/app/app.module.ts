@@ -7,7 +7,6 @@ import { TabelaLivrosComponent } from './tabela-livros/tabela-livros.component';
 import { FormLivrosComponent } from './form-livros/form-livros.component';
 import { FormsModule } from '@angular/forms';
 import { CardLivroComponent } from './card-livro/card-livro.component';
-import { ListCardLivrosComponent } from './list-card-livros/list-card-livros.component';
 import { DisponibilidadePipe } from './disponibilidade.pipe';
 import { FiltroPesquisaNomePipe } from './filtro-pesquisa-nome.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -18,6 +17,8 @@ import { FiltroClienteNomePesquisaPipe } from './filtro-cliente-nome-pesquisa.pi
 import { FormClientesComponent } from './form-clientes/form-clientes.component';
 import { EmprestimoEscolhaClienteComponent } from './emprestimo-escolha-cliente/emprestimo-escolha-cliente.component';
 import { MoedaPipe } from './moeda.pipe';
+import { SimNaoDisponivelPipe } from './sim-nao-disponivel.pipe';
+import { ExtrairNomePipe } from './extrair-nome.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,6 @@ import { MoedaPipe } from './moeda.pipe';
     TabelaLivrosComponent,
     FormLivrosComponent,
     CardLivroComponent,
-    ListCardLivrosComponent,
     DisponibilidadePipe,
     FiltroPesquisaNomePipe,
     PageNotFoundComponent,
@@ -34,7 +34,9 @@ import { MoedaPipe } from './moeda.pipe';
     FiltroClienteNomePesquisaPipe,
     FormClientesComponent,
     EmprestimoEscolhaClienteComponent,
-    MoedaPipe
+    MoedaPipe,
+    SimNaoDisponivelPipe,
+    ExtrairNomePipe,
   ],
   imports: [
     BrowserModule,

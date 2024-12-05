@@ -6,6 +6,7 @@ import { Cliente } from '../cliente';
 import { combineLatest, map, Observable } from 'rxjs';
 import { LivroSelecionadoService } from '../livro-selecionado.service';
 import { ClienteSelecionadoService } from '../cliente-selecionado.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 
 @Component({
@@ -19,17 +20,16 @@ export class EmprestimoComponent {
   listaClientes: Cliente[] = []
   nomePesquisado = "";
   @Input() botaoDinamicoAcao: string = "Dinamico";
-  @Input() livroId?: number; // Recebe o ID do livro
+  @Input() livroId?: number;
   @Output() acaoRealizada = new EventEmitter<number>();
   livroSelecionado?: Livro;
   @Input() clienteId!: number;
 
-  setLivroSelecionado(livro: Livro) {
-    return this.livroSelecionado = livro
-  }
+
 
   livroIdSelecionado: number | null = null;
   clienteSelecionadoId: number |null = null
+
 
   constructor(
     private livroApiService: LivroApiService,
@@ -38,7 +38,7 @@ export class EmprestimoComponent {
     private clienteSelecionadoService: ClienteSelecionadoService
   ) {
     this.listarClientes();
-    this.listarLivros()
+    this.listarLivros();
   }
 
   ngOnInit() {
@@ -50,12 +50,17 @@ export class EmprestimoComponent {
     });
   }
 
+
   listarClientes() {
     this.clienteApiService.listar().subscribe(
       (clientes) => {
         this.listaClientes = clientes;
       }
     );
+  }
+
+  setLivroSelecionado(livro: Livro) {
+    return this.livroSelecionado = livro
   }
 
   listarLivros() {

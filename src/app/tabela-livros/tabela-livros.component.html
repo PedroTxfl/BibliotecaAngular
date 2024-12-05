@@ -1,23 +1,18 @@
-<h3>Tabela de Livros</h3>
+<h3 class="mt-4 ">Tabela de Livros</h3>
 
-<h4 *ngIf="listaLivros.length == 0">
-    Nao ha Livros cadastrados!
+<h4 class="mt-5" *ngIf="listaLivros.length == 0">
+    Nao há Livros cadastrados!
 </h4>
 
 
-<div class="mb-3">
-  <label for="nome" class="form-label">Pesquisa por nome do livro:</label>
+<div class="w-50">
+  <label for="nome" class="form-label">Pesquisa por nome do livro ou autor:</label>
   <input [(ngModel)]="nomePesquisado" class="form-control"
-      id="nome" placeholder="Nome do livro ...">
+      id="nome" placeholder="Pesquisar">
 </div>
 
-<div class="mb-3">
-  <label for="locador" class="form-label">Pesquisa por Locador:</label>
-  <input [(ngModel)]="locadorPesquisado" class="form-control"
-      id="locador" placeholder="Nome do locador ...">
-</div>
 
-<table class="table table-striped" *ngIf="(listaLivros | filtroPesquisa:nomePesquisado:locadorPesquisado).length > 0">
+<table class="table table-striped table-bordered my-5" *ngIf="(listaLivros | filtroPesquisa:nomePesquisado).length > 0">
   <thead>
     <tr>
       <th>ID</th>
@@ -32,12 +27,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let livro of listaLivros | filtroPesquisa:nomePesquisado:locadorPesquisado">
+    <tr *ngFor="let livro of listaLivros | filtroPesquisa:nomePesquisado">
       <td>{{livro.id}}</td>
           <td>{{livro.nome}}</td>
           <td>{{livro.autor}}</td>
           <td>{{livro.editora}}</td>
-          <td>{{livro.disponivel}}</td>
+          <td>{{livro.disponivel | simNaoDisponivel}}  </td>
           <td >{{livro.locador}}</td>
           <td>{{livro.dataRetirada | date:'dd/MM/yyyy'}}</td>
           <td>{{livro.dataDevolucao | date:'dd/MM/yyyy'}}</td>

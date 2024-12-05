@@ -11,7 +11,7 @@ import { LivroApiService } from '../livro-api.service';
 export class FormLivrosComponent {
   livro = new Livro;
   id?:number;
-  botaoAcao= "ADICIONAR";
+  botaoAcao= "Adicionar";
 
   constructor(
     private livroApiService: LivroApiService,
@@ -20,7 +20,7 @@ export class FormLivrosComponent {
   ) {
     this.id = +this.route.snapshot.params['id'];
     if(this.id) {
-      this.botaoAcao = "EDITAR";
+      this.botaoAcao = "Editar";
       this.livroApiService.buscarPorId(this.id).subscribe(
         (livro) => this.livro = livro
       );
@@ -33,6 +33,7 @@ export class FormLivrosComponent {
         (livro) => {
           alert(`Livro ${this.livro.nome} editado com sucesso`);
           this.livro = livro;
+          this.voltar()
         }
       );
 

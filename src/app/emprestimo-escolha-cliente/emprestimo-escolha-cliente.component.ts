@@ -5,6 +5,7 @@ import { LivroSelecionadoService } from '../livro-selecionado.service';
 import { ClienteApiService } from '../cliente-api.service';
 import { LivroApiService } from '../livro-api.service';
 import { combineLatest } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-emprestimo-escolha-cliente',
@@ -23,6 +24,7 @@ export class EmprestimoEscolhaClienteComponent {
   constructor(
     private clienteApiService: ClienteApiService,
     private livroApiService: LivroApiService,
+    private router: Router,
     private livroSelecionadoService: LivroSelecionadoService
   ) {
     this.listarClientes();
@@ -57,6 +59,7 @@ export class EmprestimoEscolhaClienteComponent {
       ([livro, cliente]) => {
         this.livroApiService.realizarRetirada(livro, cliente).subscribe(() => {
           alert(`Retirada do livro ${livro.nome} realizada com sucesso!`);
+          this.router.navigate(['/tabelaLivros']);
         })
   })
   }

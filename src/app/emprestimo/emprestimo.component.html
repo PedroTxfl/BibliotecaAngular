@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #40768c; color: white; font-weight: 600">
   {{botaoDinamicoAcao}}
 </button>
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -9,15 +9,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        nome cliente
-        dt RETIRADA
-        dt revolucao
-        se tem multa
-
+        Escolha o que deseja com o livro:
       </div>
       <div class="modal-footer" style="justify-content: space-around;">
-        <button type="button" class="btn btn-outline-primary" routerLink="/emprestimoEscolhaLivro" data-bs-toggle="modal" >Retirar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="selecionaIdClienteParaRealizarDevolucaoEFinalizaDevolucao()">Devolver</button>
+        <button type="button" class="btn" routerLink="/emprestimoEscolhaLivro" data-bs-toggle="modal" style="background-color: #40768C; color: white;" >Retirar</button>
+        <button type="button" class="btn " routerLink="/tabelaLivros" data-bs-dismiss="modal"  (click)="selecionaIdClienteParaRealizarDevolucaoEFinalizaDevolucao()" style="background-color: #E76F51;color: white; ">Devolver</button>
       </div>
     </div>
   </div>

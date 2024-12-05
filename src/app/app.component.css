@@ -1,0 +1,9 @@
+.nav-link {
+  font-weight: 600;
+  color: white;
+}
+
+.nav-link:hover {
+  font-weight: bold;
+  color: #264653;
+}

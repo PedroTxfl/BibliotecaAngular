@@ -11,7 +11,7 @@ import { ClienteApiService } from '../cliente-api.service';
 export class FormClientesComponent {
   cliente = new Cliente;
   id?:number;
-  botaoAcao= "CADASTRAR";
+  botaoAcao= "Cadastrar";
 
   constructor(
     private clienteApiService: ClienteApiService,
@@ -20,10 +20,11 @@ export class FormClientesComponent {
   ) {
     this.id = +this.route.snapshot.params['id'];
     if(this.id || this.id == 0) {
-      this.botaoAcao = "EDITAR"
+      this.botaoAcao = "Editar"
       this.clienteApiService.buscarPorId(this.id).subscribe(
         (cliente) => this.cliente = cliente
       );
+
     }
   }
 
@@ -33,7 +34,9 @@ export class FormClientesComponent {
         (cliente) => {
         alert(`Cliente ${this.cliente.nome} editado com sucesso`);
         this.cliente = cliente;
+        this.voltar()
         }
+
       );
 
 

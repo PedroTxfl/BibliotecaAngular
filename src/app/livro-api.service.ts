@@ -27,8 +27,6 @@ export class LivroApiService {
 
   }
 
-
-
   buscarPorId(id: number): Observable<Livro> {
     const uri = `${BASE_API}/${id}`;
     return this.http.get<Livro>(uri);
@@ -66,26 +64,24 @@ export class LivroApiService {
         livro.disponivel = false;
         const id = livro.id;
 
-        // Fazer as duas requisições HTTP
         const livroUpdate$ = this.editar(id!, livro);
         const clienteUpdate$ = this.clienteApiService.editar(cliente.id!, cliente);
 
 
-        // Usar forkJoin para esperar ambas as requisições
         forkJoin([livroUpdate$, clienteUpdate$]).subscribe(
           () => {
             console.log('Livro e Cliente atualizados com sucesso');
-            observer.next(); // Sucesso
-            observer.complete(); // Conclui a execução
+            observer.next();
+            observer.complete();
           },
           (erro) => {
             console.error('Erro ao atualizar livro ou cliente:', erro);
-            observer.error(erro); // Emite erro se qualquer uma das requisições falhar
+            observer.error(erro);
           }
         );
       } else {
         alert(`O livro ${livro.nome} já está locado`);
-        observer.error("Livro não disponível"); // Emite erro se livro não estiver disponível
+        observer.error("Livro não disponível");
       }
     })
   }
@@ -111,7 +107,6 @@ export class LivroApiService {
         livro.disponivel = true;
         const id = livro.id;
 
-        // Fazer as duas requisições HTTP
         const livroUpdate$ = this.editar(id!, livro);
         const clienteUpdate$ = this.clienteApiService.editar(cliente.id!, cliente);
 
@@ -119,21 +114,21 @@ export class LivroApiService {
         console.log(livro,'beludo');
         console.log(cliente, 'bct');
 
-        // Usar forkJoin para esperar ambas as requisições
+
         forkJoin([livroUpdate$, clienteUpdate$]).subscribe(
           () => {
             console.log('Livro e Cliente atualizados com sucesso');
-            observer.next(); // Sucesso
-            observer.complete(); // Conclui a execução
+            observer.next();
+            observer.complete();
           },
           (erro) => {
             console.error('Erro ao atualizar livro ou cliente:', erro);
-            observer.error(erro); // Emite erro se qualquer uma das requisições falhar
+            observer.error(erro);
           }
         );
       } else {
         console.log("Não foi locado.");
-        observer.error("Livro não foi locado."); // Emite erro se livro não estiver disponível
+        observer.error("Livro não foi locado.");
       }
     })
 }

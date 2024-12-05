@@ -12,6 +12,6 @@ export class LivroSelecionadoService {
   }
 
   getLivroSelecionado() {
-    return this.livroSelecionado.asObservable(); // Permite que outros componentes "ouçam" as mudanças
+    return this.livroSelecionado.asObservable(); 
   }
 }

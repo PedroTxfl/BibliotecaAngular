@@ -2,31 +2,38 @@
   "clientes": [
     {
       "id": "1",
-      "nome": "Ms. Anna Cristina Ranzolin",
+      "nome": "Anna Cristina Ranzolin",
       "telefone": "51 8888888",
       "livrosRetirados": []
     },
     {
       "id": "2",
-      "nome": "Edward Bauch",
+      "nome": "Eduardo Bauch",
       "telefone": "51 77777777",
-      "livrosRetirados": [
-        {
-          "id": "2",
-          "nome": "O Hobbit",
-          "autor": "PEDRINN",
-          "editora": "HarperCollins",
-          "disponivel": false,
-          "dataRetirada": "2024-12-04T22:26:28.511Z",
-          "dataDevolucao": "2024-12-11T22:26:28.511Z",
-          "locador": "2-Mr. Edward Bauch"
-        }
-      ]
+      "livrosRetirados": []
     },
     {
       "id": "3",
       "nome": "Jennifer Schulist",
       "telefone": "51 99999999",
+      "livrosRetirados": []
+    },
+    {
+      "id": "4",
+      "nome": "Ana Carolina Silva",
+      "telefone": "11 987654321",
+      "livrosRetirados": []
+    },
+    {
+      "id": "5",
+      "nome": "João Pedro Oliveira",
+      "telefone": "21 912345678",
+      "livrosRetirados": []
+    },
+    {
+      "id": "6",
+      "nome": "Maria Eduarda Santos",
+      "telefone": "32 956789123",
       "livrosRetirados": []
     }
   ],
@@ -34,36 +41,30 @@
     {
       "id": "1",
       "nome": "1984",
-      "autor": "George Orwell",
+      "autor": "Reis",
       "editora": "Companhia das Letras",
-      "disponivel": true,
-      "dataDevolucao": "2024-12-04T22:12:15.332Z"
+      "disponivel": true
     },
     {
       "id": "2",
       "nome": "O Hobbit",
       "autor": "PEDRINN",
       "editora": "HarperCollins",
-      "disponivel": false,
-      "dataRetirada": "2024-12-04T22:26:28.511Z",
-      "dataDevolucao": "2024-12-11T22:26:28.511Z",
-      "locador": "2-Mr. Edward Bauch"
+      "disponivel": true
     },
     {
       "id": "5",
       "nome": "Cem Anos de Solidão",
       "autor": "Gabriel García Márquez",
       "editora": "Record",
-      "disponivel": true,
-      "dataDevolucao": "2024-12-04T22:04:21.083Z"
+      "disponivel": true
     },
     {
       "id": "6",
       "nome": "O Apanhador no Campo de Centeio",
       "autor": "J.D. Salinger",
       "editora": "Editora do Autor",
-      "disponivel": true,
-      "dataDevolucao": "2024-12-05T02:15:39.429Z"
+      "disponivel": true
     },
     {
       "id": "7",
@@ -94,7 +95,7 @@
       "disponivel": true
     },
     {
-      "id": "ccf5",
+      "id": "11",
       "nome": "Rico facil",
       "autor": "Pedroka",
       "editora": "Cml",
